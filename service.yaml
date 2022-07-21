@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: blog
+  name: blog
+  namespace: ghost
+spec:
+  ports:
+    - port: 80
+      targetPort: 2368
+  selector:
+    app: blog
+  type: LoadBalancer

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog
+  namespace: ghost
+  labels:
+    app: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+      - name: blog
+        image: ghost:3.25.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2368
+        env:
+        - name: url
+          value: http://my-blog.corp.local
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: content
+      volumes:
+      - name: content
+        persistentVolumeClaim:
+          claimName: blog-content
