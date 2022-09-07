@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: ghost:5.4.1
+        image: harbor-app.jarvis.tanzu/applications/ghost@sha256:039883e90af009fa9907a13934da8e01586129cca6d9e8e1c3edfba9e2c22463
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 2368
