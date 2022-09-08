@@ -9,4 +9,4 @@ spec:
   storageClassName: ftt0-r0
   resources:
     requests:
-      storage: 5Gi
+      storage: 15Gi
