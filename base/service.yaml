@@ -4,7 +4,6 @@ metadata:
   labels:
     name: blog
   name: blog
-  namespace: ghost
 spec:
   ports:
     - port: 80
