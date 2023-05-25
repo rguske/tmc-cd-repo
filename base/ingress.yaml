@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ghost-ingress
+  labels:
+    app: ghost
+  annotations:
+    kubernetes.io/ingress.class: contour
+spec:
+  rules:
+  - host: ghost.cpod-aviv8.az-wdc.cloud-garage.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ghost-service
+            port:
+              number: 80

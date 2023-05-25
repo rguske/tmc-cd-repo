@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: blog
+  name: ghost
   labels:
-    app: blog
+    app: ghost
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: blog
+      app: ghost
   template:
     metadata:
       labels:
-        app: blog
+        app: ghost
     spec:
       containers:
-      - name: blog
+      - name: ghost
         image: projects.registry.vmware.com/tanzu_ese_poc/ghost@sha256:d44cc9cc65fb5d6c595dd48bbcda00968b622fe6cc5eb5f458c147c170e6c4db
         imagePullPolicy: Always
         ports:
@@ -29,4 +29,4 @@ spec:
       volumes:
       - name: content
         persistentVolumeClaim:
-          claimName: blog-content
+          claimName: ghost-content
