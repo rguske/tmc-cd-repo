@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-server
+  labels:
+    app: redis-server
+    tier: cache
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+  selector:
+    app: redis-server
+    tier: cache
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelb-db
+  labels:
+    app: yelb-db
+    tier: backenddb
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5432
+  selector:
+    app: yelb-db
+    tier: backenddb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelb-appserver
+  labels:
+    app: yelb-appserver
+    tier: middletier
+spec:
+  type: ClusterIP
+  ports:
+  - port: 4567
+  selector:
+    app: yelb-appserver
+    tier: middletier
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelb-ui
+  labels:
+    app: yelb-ui
+    tier: frontend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+#    nodePort: 30001
+  selector:
+    app: yelb-ui
+    tier: frontend

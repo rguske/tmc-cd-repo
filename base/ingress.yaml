@@ -1,20 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ghost-ingress
+  name: yelb-ingress
   labels:
-    app: ghost
+    app: yelb-ui
+    tier: frontend
   annotations:
     kubernetes.io/ingress.class: contour
 spec:
   rules:
-  - host: ghost.cpod-aviv8.az-wdc.cloud-garage.net
+  - host: yelb.cpod-aviv8.az-wdc.cloud-garage.net
     http:
       paths:
       - pathType: Prefix
         path: /
         backend:
           service:
-            name: ghost-service
+            name: yelb-ui
             port:
               number: 80

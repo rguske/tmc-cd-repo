@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yelb-ui
+spec:
+  selector:
+    matchLabels:
+      app: yelb-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yelb-ui
+        tier: frontend
+    spec:
+      containers:
+      - name: yelb-ui
+        image: registry.cloud-garage.net/rguske/yelb-ui@sha256:1904f772143a9f870d8edc4e121e5176ce898706137da6c776dbf41c84a874d6
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-server
+spec:
+  selector:
+    matchLabels:
+      app: redis-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-server
+        tier: cache
+    spec:
+      containers:
+      - name: redis-server
+        image: registry.cloud-garage.net/rguske/redis@sha256:3c07847e5aa6911cf5d9441642769d3b6cd0bf6b8576773ae3a0742056b9dd47
+        ports:
+        - containerPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yelb-db
+spec:
+  selector:
+    matchLabels:
+      app: yelb-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yelb-db
+        tier: backenddb
+    spec:
+      containers:
+      - name: yelb-db
+        image: registry.cloud-garage.net/rguske/yelb-db@sha256:6412d2fe96ee71ca701932d47675c549fe0428dede6a7975d39d9a581dc46c0c
+        ports:
+        - containerPort: 5432
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yelb-appserver
+spec:
+  selector:
+    matchLabels:
+      app: yelb-appserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yelb-appserver
+        tier: middletier
+    spec:
+      containers:
+      - name: yelb-appserver
+        image: registry.cloud-garage.net/rguske/yelb-appserver@sha256:0d2e394b0ae5a2ab0f8891e0ac8a163b27baff6dacddcfb578766dddc0dba20d
+        ports:
+        - containerPort: 4567
