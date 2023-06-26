@@ -19,7 +19,7 @@ spec:
         image: projects.registry.vmware.com/tanzu_ese_poc/ghost@sha256:d44cc9cc65fb5d6c595dd48bbcda00968b622fe6cc5eb5f458c147c170e6c4db
         imagePullPolicy: Always
         ports:
-        - containerPort: 2368
+        - containerPort: 80
         env:
         - name: url
           value: http://my-blog.corp.local
