@@ -111,7 +111,7 @@ spec:
       - name: cart-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-cart:1.0.0
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-cart:1.0.0
         name: cart
         env:
         - name: REDIS_HOST
@@ -268,7 +268,7 @@ spec:
       - name: catalog-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-catalog:rel1
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-catalog:rel1
         name: catalog
         env:
         - name: CATALOG_DB_HOST
@@ -336,7 +336,7 @@ spec:
         service: shopping
     spec:
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-front-end:rel1
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-front-end:rel1
         name: shopping
         env:
         - name: FRONTEND_PORT
@@ -464,7 +464,7 @@ spec:
       - name: order-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-order:1.0.1
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-order:1.0.1
         name: order
         env:
         - name: ORDER_DB_HOST
@@ -536,7 +536,7 @@ spec:
         service: payment
     spec:
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-payment:1.0.0
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-payment:1.0.0
         name: payment
         env:
         - name: PAYMENT_PORT
@@ -670,7 +670,7 @@ spec:
       - name: users-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-user:1.0.0
+      - image: projects.registry.vmware.com/tanzu_ese_poc/acme/acmeshop-user:1.0.0
         name: users
         env:
         - name: USERS_DB_HOST
@@ -699,5 +699,4 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
----
 
