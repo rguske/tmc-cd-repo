@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: acme
+spec:
+  tls:
+  - hosts:
+      - acme.cpod-aviv8.az-wdc.cloud-garage.net
+    secretName: acme-tls
+  rules:
+  - host: acme.cpod-aviv8.az-wdc.cloud-garage.net
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: shopping
+            port:
+              number: 3000
+
