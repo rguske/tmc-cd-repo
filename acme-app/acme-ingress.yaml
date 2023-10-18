@@ -1,3 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping
+  labels:
+    app: shopping
+    service: shopping
+spec:
+  ports:
+    - name: http-shopping
+      protocol: TCP
+      port: 3000
+  selector:
+    app: shopping
+    service: shopping
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -5,10 +22,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - acme.cpod-aviv8.az-wdc.cloud-garage.net
+      - acme.beyondelastic.demo
     secretName: acme-tls
   rules:
-  - host: acme.cpod-aviv8.az-wdc.cloud-garage.net
+  - host: acme.beyondelastic.demo 
     http:
       paths:
       - path: "/"
@@ -18,4 +35,3 @@ spec:
             name: shopping
             port:
               number: 3000
-
