@@ -1,20 +1,4 @@
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: shopping
-  labels:
-    app: shopping
-    service: shopping
-spec:
-  ports:
-    - name: http-shopping
-      protocol: TCP
-      port: 3000
-  selector:
-    app: shopping
-    service: shopping
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
